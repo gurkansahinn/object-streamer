@@ -56,7 +56,6 @@ export class ObjectService implements IObject {
         const objectIndex = ObjectService.getIndexById(id);
 
         if (objectIndex < 0) {
-            alt.logWarning(id + " id'li obje bulunamadı. (DELETE OBJECT)");
             return;
         }
 
