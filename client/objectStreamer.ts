@@ -134,7 +134,7 @@ alt.onServer(ObjectEvent.Delete, ObjectStreamer.delete);
 alt.onServer(ObjectEvent.EditAttachData, ObjectStreamer.editAttachData);
 alt.onServer(ObjectEvent.Sync, ObjectStreamer.sync);
 
-alt.everyTick(ObjectStreamer.checkObjects);
+alt.setInterval(ObjectStreamer.checkObjects, 1000);
 
 function distance(vec1: alt.Vector3, vec2: alt.Vector3) {
     return Math.sqrt(Math.pow((vec1.x - vec2.x), 2) + Math.pow((vec1.y - vec2.y), 2) + Math.pow((vec1.z - vec2.z), 2));
