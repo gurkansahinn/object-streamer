@@ -55,14 +55,14 @@ export class ObjectStreamer implements IObject {
         return ObjectStreamer.objectList.findIndex((object) => object.id === id);
     }
 
-    static updateObjectHandle(id: number, handle: number) {
+    static updateObjectHandle(id: number, gameObject: number) {
         const object = ObjectStreamer.getById(id);
 
         if (!object) {
             return;
         }
 
-        object.gameObject = handle;
+        object.gameObject = gameObject;
     }
 
     static editAttachData(id: number, attachData: IAttachedObjectData) {
@@ -79,15 +79,15 @@ export class ObjectStreamer implements IObject {
         }
     }
 
-    static attachToEntity(handle: number, attachData: IAttachedObjectData) {
-        if (!handle) {
+    static attachToEntity(gameObject: number, attachData: IAttachedObjectData) {
+        if (!gameObject) {
             return;
         }
 
-        native.attachEntityToEntity(handle, attachData.entity, native.getPedBoneIndex(native.getPlayerPed(-1), attachData.boneIndex), attachData.xPos, attachData.yPos, attachData.zPos, attachData.xRot, attachData.yRot, attachData.zRot, false, attachData.useSoftPinning, attachData.collision, attachData.isPed, attachData.vertexIndex, attachData.fixedRot);
+        native.attachEntityToEntity(gameObject, attachData.entity, native.getPedBoneIndex(native.getPlayerPed(-1), attachData.boneIndex), attachData.xPos, attachData.yPos, attachData.zPos, attachData.xRot, attachData.yRot, attachData.zRot, false, attachData.useSoftPinning, attachData.collision, attachData.isPed, attachData.vertexIndex, attachData.fixedRot);
     }
 
-    static show(object) {
+    static show(object: ObjectStreamer) {
         const createdObject = native.createObject(native.getHashKey(object.model), object.position.x, object.position.y, object.position.z, false, false, false);
 
         native.setEntityRotation(createdObject, object.rotation.x, object.rotation.y, object.rotation.z, 0, false);
@@ -105,7 +105,7 @@ export class ObjectStreamer implements IObject {
         ObjectStreamer.updateObjectHandle(object.id, createdObject);
     }
 
-    static hide(object) {
+    static hide(object: ObjectStreamer) {
         native.deleteObject(object.gameObject);
 
         object.gameObject = null;
