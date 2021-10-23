@@ -10,6 +10,7 @@ A simple and useful object handler (with sync attachable to entity). It is based
 
 **Note:** Techincal support will not be provided. It is not recommended to use if you dont have sufficient technical knowledge. (but if you see it any mistake / bug, you can open a issue).
 
+**Max Object Limit:** 10.000
 
 
 ---
