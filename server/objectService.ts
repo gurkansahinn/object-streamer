@@ -76,7 +76,7 @@ export class ObjectService implements IObject {
         let objects = [];
 
         ObjectService.objectList.find((object) => {
-            if (object.attachData.entity) {
+            if (object.attachData && object.attachData.entity) {
                 objects.push(object);
             }
         })
